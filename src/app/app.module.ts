@@ -11,6 +11,7 @@ import { RegisterPage } from '../pages/register/register';
 import { AboutPage } from '../pages/about/about';
 import { ValidateProvider } from '../providers/validate/validate';
 import { UtilProvider } from '../providers/util/util';
+import { AuthProvider } from '../providers/auth/auth';
 
 import { HttpModule } from '@angular/http';
 
@@ -40,7 +41,8 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ValidateProvider,
-    UtilProvider
+    UtilProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

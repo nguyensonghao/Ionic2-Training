@@ -3,6 +3,7 @@ import { NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { ValidateProvider } from '../../providers/validate/validate';
 import { UtilProvider } from '../../providers/util/util';
+import { INVALID_EMAIL, EMPTY_PASSWORD, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from './../../constants/message';
 
 @Component({
   selector: 'page-login',
@@ -26,9 +27,11 @@ export class LoginPage {
 
   logForm () {
     if (!this.validateProvider.validateEmail(this.user['email'])) {
-      this.utilProvider.showToast("Email is invalid");
+      this.utilProvider.showToast(INVALID_EMAIL);
+    } else if (this.validateProvider.validatePassword(this.user['password'])) {
+      this.utilProvider.showToast(this.validateProvider.validatePassword(this.user['password']));
     } else {
-
+      console.log("Login successfully");
     }
   }
 

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { EMPTY_PASSWORD, PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH } from './../../constants/message';
+
 @Injectable()
 export class ValidateProvider {
 
@@ -14,8 +16,18 @@ export class ValidateProvider {
     return re.test(email);
   }
 
-  validatePassword (password: string): boolean {
-    return true;
+  validatePassword (password: string): string {
+    if (this.validateEmpty(password)) {
+      if (password.length < 6) {
+        return PASSWORD_MIN_LENGTH;
+      } else if (password.length > 32) {
+        return PASSWORD_MAX_LENGTH;
+      } else {
+        return "";
+      }
+    } else {
+      return EMPTY_PASSWORD;
+    }
   }
 
   validateEmpty (str: string): boolean {
