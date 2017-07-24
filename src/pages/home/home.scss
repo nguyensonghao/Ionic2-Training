@@ -1,3 +1,15 @@
 page-home {
+    .name {
+        color: white;
+        text-transform: capitalize;
+    }
 
+    .email {
+        color: white;
+    }
+
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
 }

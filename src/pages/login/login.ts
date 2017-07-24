@@ -1,38 +1,61 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { ValidateProvider } from '../../providers/validate/validate';
 import { UtilProvider } from '../../providers/util/util';
-import { INVALID_EMAIL, EMPTY_PASSWORD, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from './../../constants/message';
+import { AuthProvider } from './../../providers/auth/auth';
+import { ERROR_STATUS } from './../../constants/config';
+import { HomePage } from './../home/home';
+import { RegisterPage } from './../register/register';
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-  providers: [ValidateProvider, UtilProvider]
+  providers: [ValidateProvider, UtilProvider, AuthProvider]
 })
 
 export class LoginPage {
   public user: Object;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public validateProvider: ValidateProvider, public utilProvider: UtilProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public validateProvider: ValidateProvider, public utilProvider: UtilProvider, public authProvider: AuthProvider) {
     this.user = {
       email: '',
       password: ''
     };
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  logForm () {
+    let validateEmail = this.validateProvider.validateEmail(this.user['email']);
+    if (!validateEmail['result']) {
+      this.utilProvider.showToast(validateEmail['message']);
+    } else {
+      let validatePassword = this.validateProvider.validatePassword(this.user['password']);
+      if (validatePassword['result']) {
+        // Email and password valid, call api login
+        this.utilProvider.showLoading(true);
+        this.authProvider.login(this.user)
+          .map(response => response.json())
+          .subscribe(result => {
+            this.utilProvider.showLoading(false);
+            if (result.status == ERROR_STATUS) {
+              this.utilProvider.showToast(result.message);
+            } else {
+              // Save data. If in browser, data will be save in localStorage and in device, data will be save in native storage
+              this.authProvider.saveUser(result.data);
+              this.navCtrl.push(HomePage).then(() => {
+                let index = this.navCtrl.getActive().index;
+                this.navCtrl.remove(0, index);
+              });
+            }
+          })
+      } else {
+        this.utilProvider.showToast(validatePassword['message']);
+      }
+    }
   }
 
-  logForm () {
-    if (!this.validateProvider.validateEmail(this.user['email'])) {
-      this.utilProvider.showToast(INVALID_EMAIL);
-    } else if (this.validateProvider.validatePassword(this.user['password'])) {
-      this.utilProvider.showToast(this.validateProvider.validatePassword(this.user['password']));
-    } else {
-      console.log("Login successfully");
-    }
+  goRegister () {
+    this.navCtrl.push(RegisterPage);
   }
 
 }

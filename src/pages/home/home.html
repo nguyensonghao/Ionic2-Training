@@ -4,9 +4,9 @@
             Member Area
         </ion-title>
         <ion-buttons end>
-            <button ion-button>
-        <ion-icon name="log-out"></ion-icon>
-      </button>
+            <button ion-button (click)="logout()">
+                <ion-icon name="log-out"></ion-icon>
+            </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
@@ -15,10 +15,10 @@
     <ion-list>
         <ion-item>
             <ion-avatar item-start>
-                <img src="img/header.png">
+                <img class="avatar" src="assets/img/avatar.png">
             </ion-avatar>
-            <h2>Cher</h2>
-            <p>Ugh. As if.</p>
+            <h2 class="name">{{ user.name }}</h2>
+            <p class="email">{{ user.email }}</p>
         </ion-item>
     </ion-list>
 </ion-content>

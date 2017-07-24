@@ -1,24 +1,61 @@
+import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the RegisterPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { AuthProvider } from './../../providers/auth/auth';
+import { ValidateProvider } from './../../providers/validate/validate';
+import { UtilProvider } from './../../providers/util/util';
+import { ERROR_STATUS } from './../../constants/config';
+import { REGISTER_SUCCESS } from './../../constants/message';
 
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
+  providers: [UtilProvider, ValidateProvider, AuthProvider]
 })
-export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+export class RegisterPage {
+  public user: Object;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public utilProvider: UtilProvider, public validateProvider: ValidateProvider, public authProvider: AuthProvider) {
+    this.user = {
+      email: "",
+      password: "",
+      name: ""
+    }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+  register () {
+    let validateName = this.validateProvider.validateName(this.user['name']);
+    if (!validateName['result']) {
+      this.utilProvider.showToast(validateName['message']);
+    } else {
+      let valdiateEmail = this.validateProvider.validateEmail(this.user['email']);
+      if (!valdiateEmail['result']) {
+        this.utilProvider.showToast(valdiateEmail['message']);
+      } else {
+        let validatePassword = this.validateProvider.validatePassword(this.user['password']);
+        if (validatePassword['result']) {
+          // Call api to register user
+          this.utilProvider.showLoading(true);
+          this.authProvider.register(this.user)
+            .map(response => response.json())
+            .subscribe(result => {
+              this.utilProvider.showLoading(false);
+              if (result.status == ERROR_STATUS) {
+                this.utilProvider.showToast(result.message);
+              } else {
+                this.utilProvider.showToast(REGISTER_SUCCESS);
+                setTimeout(() => {
+                  this.navCtrl.pop();
+                }, 1500);
+              }
+            })
+        } else {
+          this.utilProvider.showToast(validatePassword['message']);
+        }
+      }
+    }
   }
 
 }
