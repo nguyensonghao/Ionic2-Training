@@ -5,19 +5,28 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Toast } from '@ionic-native/toast';
 
+// Import pages
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from  '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AboutPage } from '../pages/about/about';
+import { ListProductPage } from '../pages/list-product/list-product';
+
+// Import providers
+import { DetailProductPage } from '../pages/detail-product/detail-product';
 import { ValidateProvider } from '../providers/validate/validate';
 import { UtilProvider } from '../providers/util/util';
 import { AuthProvider } from '../providers/auth/auth';
 import { StorageProvider } from '../providers/storage/storage';
 
+// Import components
+import { RateComponent } from './../components/rate/rate';
+
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { SharedProvider } from '../providers/shared/shared';
+import { ProductProvider } from '../providers/product/product';
 
 @NgModule({
   declarations: [
@@ -25,7 +34,10 @@ import { SharedProvider } from '../providers/shared/shared';
     HomePage,
     LoginPage,
     RegisterPage,
-    AboutPage
+    AboutPage,
+    ListProductPage,
+    DetailProductPage,
+    RateComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +51,9 @@ import { SharedProvider } from '../providers/shared/shared';
     HomePage,
     LoginPage,
     RegisterPage,
-    AboutPage
+    AboutPage,
+    ListProductPage,
+    DetailProductPage
   ],
   providers: [
     StatusBar,
@@ -50,7 +64,8 @@ import { SharedProvider } from '../providers/shared/shared';
     UtilProvider,
     AuthProvider,
     StorageProvider,
-    SharedProvider
+    SharedProvider,
+    ProductProvider
   ]
 })
 export class AppModule {}

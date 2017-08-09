@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar color="dark" hideBackButton="true">
+        <ion-title>
+            List Product
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="logout()">
+                <ion-icon name="log-out"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item *ngFor="let product of listProduct" (click)="showDetail(product)">
+            <ion-avatar item-start>
+                <img [src]="product.image" class="avatar">
+            </ion-avatar>
+            <h2>{{ product.name }}</h2>
+            <h3 class="price">{{ product.price | currency:'USD':true }}</h3>
+            <button ion-button outline>Detail</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

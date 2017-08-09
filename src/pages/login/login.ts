@@ -4,9 +4,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ValidateProvider } from '../../providers/validate/validate';
 import { UtilProvider } from '../../providers/util/util';
 import { AuthProvider } from './../../providers/auth/auth';
-import { ERROR_STATUS } from './../../constants/config';
-import { HomePage } from './../home/home';
+import { ERROR_STATUS, APP_VERSION } from './../../constants/config';
 import { RegisterPage } from './../register/register';
+import { ListProductPage } from './../list-product/list-product';
 
 @Component({
   selector: 'page-login',
@@ -17,7 +17,8 @@ import { RegisterPage } from './../register/register';
 export class LoginPage {
   public user: Object;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public validateProvider: ValidateProvider, public utilProvider: UtilProvider, public authProvider: AuthProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public validateProvider: ValidateProvider, 
+    public utilProvider: UtilProvider, public authProvider: AuthProvider) {
     this.user = {
       email: '',
       password: ''
@@ -33,8 +34,8 @@ export class LoginPage {
       if (validatePassword['result']) {
         // Email and password valid, call api login
         this.utilProvider.showLoading(true);
+        this.user['app_version'] = APP_VERSION;
         this.authProvider.login(this.user)
-          .map(response => response.json())
           .subscribe(result => {
             this.utilProvider.showLoading(false);
             if (result.status == ERROR_STATUS) {
@@ -42,11 +43,11 @@ export class LoginPage {
             } else {
               // Save data. If in browser, data will be save in localStorage and in device, data will be save in native storage
               this.authProvider.saveUser(result.data);
-              this.navCtrl.push(HomePage).then(() => {
-                let index = this.navCtrl.getActive().index;
-                this.navCtrl.remove(0, index);
-              });
+              this.navCtrl.setRoot(ListProductPage);
             }
+          }, error => {
+            this.utilProvider.showLoading(false);
+            this.utilProvider.showErrorNotInternet();
           })
       } else {
         this.utilProvider.showToast(validatePassword['message']);

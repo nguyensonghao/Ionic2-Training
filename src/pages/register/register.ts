@@ -1,4 +1,3 @@
-import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -17,7 +16,8 @@ import { REGISTER_SUCCESS } from './../../constants/message';
 export class RegisterPage {
   public user: Object;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public utilProvider: UtilProvider, public validateProvider: ValidateProvider, public authProvider: AuthProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public utilProvider: UtilProvider, 
+    public validateProvider: ValidateProvider, public authProvider: AuthProvider) {
     this.user = {
       email: "",
       password: "",
@@ -39,7 +39,6 @@ export class RegisterPage {
           // Call api to register user
           this.utilProvider.showLoading(true);
           this.authProvider.register(this.user)
-            .map(response => response.json())
             .subscribe(result => {
               this.utilProvider.showLoading(false);
               if (result.status == ERROR_STATUS) {
@@ -50,6 +49,9 @@ export class RegisterPage {
                   this.navCtrl.pop();
                 }, 1500);
               }
+            }, error => {
+              this.utilProvider.showLoading(false);
+              this.utilProvider.showErrorNotInternet();
             })
         } else {
           this.utilProvider.showToast(validatePassword['message']);

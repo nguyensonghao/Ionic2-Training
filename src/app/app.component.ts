@@ -3,10 +3,9 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
 import { LoginPage } from  '../pages/login/login';
-import { RegisterPage } from '../pages/register/register';
-import { AboutPage } from '../pages/about/about';
+import { ListProductPage } from './../pages/list-product/list-product';
+import { HomePage } from './../pages/home/home';
 import { AuthProvider } from './../providers/auth/auth';
 
 @Component({
@@ -15,7 +14,7 @@ import { AuthProvider } from './../providers/auth/auth';
 })
 
 export class MyApp {
-  rootPage:any;
+  rootPage: any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, authProvider: AuthProvider) {
     platform.ready().then(() => {

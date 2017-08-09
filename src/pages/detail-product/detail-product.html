@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-navbar color="dark">
+        <ion-title>
+            {{ product.name }}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card-header>
+    <p class="name">{{ product.name }}</p>
+    <rate [rate]="4"></rate>
+  </ion-card-header>
+
+  <ion-card-content>
+      <img [src]="product.image"/>
+      <p class="price">{{ product.price | currency:'USD':true }}</p>
+      <p class="description">{{ product.description }}</p>
+  </ion-card-content>
+</ion-content>

@@ -14,12 +14,12 @@ export class AuthProvider {
 
   login (user: Object) {
     let urlApiLogin = API_URL + "user/getLogin";
-    return this.http.post(urlApiLogin, user);
+    return this.http.post(urlApiLogin, user).map(response => response.json());
   }
 
   register (user: Object) {
     let urlApiRegister = API_URL + "user/getRegister";
-    return this.http.post(urlApiRegister, user);
+    return this.http.post(urlApiRegister, user).map(response => response.json());
   }
 
   logout () {
@@ -33,5 +33,4 @@ export class AuthProvider {
   getUser (): Promise<Object> {
     return this.storageProvider.getItem(CURRENT_USER);
   }
-
 }

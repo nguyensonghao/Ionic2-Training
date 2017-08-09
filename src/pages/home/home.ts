@@ -28,6 +28,10 @@ export class HomePage {
 
   logout () {
     this.authProvider.logout();
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.push(LoginPage).then(() => {
+      // Remove page home to avoid user back screen by physical back button android
+      let index = this.navCtrl.getActive().index;
+      this.navCtrl.remove(0, index);
+    });
   }
 }
