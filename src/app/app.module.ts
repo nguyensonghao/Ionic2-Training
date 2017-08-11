@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Toast } from '@ionic-native/toast';
+import { Camera } from "@ionic-native/camera";
+import { File } from '@ionic-native/file';
 
 // Import pages
 import { MyApp } from './app.component';
@@ -22,11 +24,12 @@ import { StorageProvider } from '../providers/storage/storage';
 
 // Import components
 import { RateComponent } from './../components/rate/rate';
+import { EditImageComponent } from '../components/edit-image/edit-image';
 
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
-import { SharedProvider } from '../providers/shared/shared';
 import { ProductProvider } from '../providers/product/product';
+import { ShareProvider } from '../providers/share/share';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { ProductProvider } from '../providers/product/product';
     AboutPage,
     ListProductPage,
     DetailProductPage,
-    RateComponent
+    RateComponent,
+    EditImageComponent
   ],
   imports: [
     BrowserModule,
@@ -53,19 +57,22 @@ import { ProductProvider } from '../providers/product/product';
     RegisterPage,
     AboutPage,
     ListProductPage,
-    DetailProductPage
+    DetailProductPage,
+    EditImageComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Toast,
+    Camera,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ValidateProvider,
     UtilProvider,
     AuthProvider,
     StorageProvider,
-    SharedProvider,
-    ProductProvider
+    ProductProvider,
+    ShareProvider
   ]
 })
 export class AppModule {}

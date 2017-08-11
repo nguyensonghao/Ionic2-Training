@@ -1,0 +1,45 @@
+<ion-header color="">
+  <ion-toolbar>
+    <ion-title>
+      CAPTURE IMAGE
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" color="white" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="capture.title" name="title" placeholder="Title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea [(ngModel)]="capture.description" name="description" placeholder="Description"></ion-textarea>
+  </ion-item>
+  <ion-item class="item-image">
+    <img [src]="capture.image" class="capture-image" />
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <button ion-button>
+          <ion-icon ios="ios-brush" md="md-brush"></ion-icon> 
+          <span class="text-button">Edit</span>
+        </button>
+      </ion-col>
+
+      <ion-col>
+        <button ion-button>
+          <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
+          <span class="text-button">Upload</span>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
