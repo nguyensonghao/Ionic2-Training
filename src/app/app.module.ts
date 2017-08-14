@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { Toast } from '@ionic-native/toast';
 import { Camera } from "@ionic-native/camera";
 import { File } from '@ionic-native/file';
+import { Crop } from '@ionic-native/crop';
 
 // Import pages
 import { MyApp } from './app.component';
@@ -30,6 +31,7 @@ import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { ProductProvider } from '../providers/product/product';
 import { ShareProvider } from '../providers/share/share';
+import { UploadProvider } from '../providers/upload/upload';
 
 @NgModule({
   declarations: [
@@ -66,13 +68,15 @@ import { ShareProvider } from '../providers/share/share';
     Toast,
     Camera,
     File,
+    Crop,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ValidateProvider,
     UtilProvider,
     AuthProvider,
     StorageProvider,
     ProductProvider,
-    ShareProvider
+    ShareProvider,
+    UploadProvider
   ]
 })
 export class AppModule {}

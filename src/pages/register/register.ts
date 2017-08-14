@@ -4,7 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from './../../providers/auth/auth';
 import { ValidateProvider } from './../../providers/validate/validate';
 import { UtilProvider } from './../../providers/util/util';
-import { ERROR_STATUS } from './../../constants/config';
+import { ERROR_STATUS, APP_VERSION } from './../../constants/config';
 import { REGISTER_SUCCESS } from './../../constants/message';
 
 @Component({
@@ -38,6 +38,7 @@ export class RegisterPage {
         if (validatePassword['result']) {
           // Call api to register user
           this.utilProvider.showLoading(true);
+          this.user['app_version'] = APP_VERSION;
           this.authProvider.register(this.user)
             .subscribe(result => {
               this.utilProvider.showLoading(false);

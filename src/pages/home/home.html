@@ -8,18 +8,18 @@
         </ion-col>
         <ion-col col-1>
             <button class="profile-btn" ion-button icon-only clear small>
-        <ion-icon name="settings"></ion-icon>
-      </button>
+                <ion-icon name="settings"></ion-icon>
+            </button>
         </ion-col>
         <ion-col offset-1 col-2>
             <button class="profile-btn" ion-button icon-only outline small>
-        <ion-icon name="contacts"></ion-icon>
-      </button>
+                <ion-icon name="contacts"></ion-icon>
+            </button>
         </ion-col>
         <ion-col col-2>
             <button class="profile-btn" ion-button outline small>
-        Edit Profile
-      </button>
+                Edit Profile
+            </button>
         </ion-col>
     </ion-row>
     <ion-row padding-left class="name-row">
@@ -54,49 +54,47 @@
         </ion-segment>
     </ion-row>
     <hr>
-
-    <img *ngFor="let tweet of listImage" src="{{tweet}}" class="tweet-img" [hidden]="listImage === null">
     
     <ion-list>
-        <div *ngFor="let tweet of dummyTweets">
+        <div *ngFor="let tweet of listImage">
             <ion-row>
                 <ion-col col-3>
-                    <img src="assets/img/{{tweet.img}}" class="tweet-img" [hidden]="tweet.currentImage !== null">
+                    <img [src]="tweet.image_link" class="tweet-img">
                 </ion-col>
                 <ion-col col-9>
                     <ion-row>
                         <ion-col col-9 class="no-top-padding">
-                            {{ tweet.username }} <span class="twitter-name">@{{ tweet.handle }}</span>
+                            {{ tweet.title }}
                         </ion-col>
                         <ion-col class="muted no-top-padding">
-                            <ion-icon name="chatbubbles"></ion-icon> {{ tweet.date | date: 'M/d' }}
+                            <ion-icon name="chatbubbles"></ion-icon> {{ tweet.created_at | date: 'M/d' }}
                         </ion-col>
                     </ion-row>
 
                     <ion-row>
-                        <ion-col class="no-top-padding">{{ tweet.text }}</ion-col>
+                        <ion-col class="no-top-padding">{{ tweet.description }}</ion-col>
                     </ion-row>
 
                     <ion-row class="share-row">
                         <ion-col col-4 class="no-top-padding">
                             <button ion-button icon-only clear small>
-                <ion-icon name="share-alt"></ion-icon>
-                <span class="muted"></span>
-              </button>
+                                <ion-icon name="share-alt"></ion-icon>
+                                <span class="muted"></span>
+                            </button>
                         </ion-col>
 
                         <ion-col col-4 class="no-top-padding">
                             <button ion-button icon-only clear small>
-                <ion-icon name="repeat"></ion-icon>
-                <span class="muted">{{ tweet.shareCount }}</span>
-              </button>
+                                <ion-icon name="repeat"></ion-icon>
+                                <span class="muted">{{ tweet.shareCount }}</span>
+                            </button>
                         </ion-col>
 
                         <ion-col col-4 class="no-top-padding">
                             <button ion-button icon-only clear small>
-                <ion-icon name="star"></ion-icon>
-                <span class="muted">{{ tweet.likeCount }}</span>
-              </button>
+                                <ion-icon name="star"></ion-icon>
+                                <span class="muted">{{ tweet.likeCount }}</span>
+                            </button>
                         </ion-col>
 
                     </ion-row>

@@ -6,7 +6,7 @@ import { UtilProvider } from '../../providers/util/util';
 import { AuthProvider } from './../../providers/auth/auth';
 import { ERROR_STATUS, APP_VERSION } from './../../constants/config';
 import { RegisterPage } from './../register/register';
-import { ListProductPage } from './../list-product/list-product';
+import { HomePage } from './../home/home';
 
 @Component({
   selector: 'page-login',
@@ -43,7 +43,7 @@ export class LoginPage {
             } else {
               // Save data. If in browser, data will be save in localStorage and in device, data will be save in native storage
               this.authProvider.saveUser(result.data);
-              this.navCtrl.setRoot(ListProductPage);
+              this.navCtrl.setRoot(HomePage);
             }
           }, error => {
             this.utilProvider.showLoading(false);

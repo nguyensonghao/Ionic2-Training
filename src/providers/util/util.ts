@@ -6,6 +6,8 @@ import { ToastController, Platform, LoadingController, AlertController  } from '
 import { Toast } from '@ionic-native/toast';
 import { ERROR_CONNECT_INTERNET } from './../../constants/message';
 
+declare var window: any;
+
 @Injectable()
 export class UtilProvider {
   private loading: any;
@@ -75,4 +77,25 @@ export class UtilProvider {
 
     this.alert.present();
   }
+
+  makeFileIntoBlob (_imagePath: string): Promise<any> {
+		return new Promise((resolve, reject) => {
+			window.resolveLocalFileSystemURL(_imagePath, (fileEntry) => {
+				fileEntry.file((resFile) => {
+					var reader = new FileReader();
+					reader.onloadend = (evt: any) => {
+						var imgBlob: any = new Blob([evt.target.result], { type: resFile.type });
+						imgBlob.name = resFile.name;
+						resolve(imgBlob);
+					};
+
+					reader.onerror = (e) => {						
+						reject(e);
+					};
+
+					reader.readAsArrayBuffer(resFile);
+				});
+			});
+		});
+	}
 }
