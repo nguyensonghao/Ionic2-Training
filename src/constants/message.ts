@@ -6,3 +6,5 @@ export const PASSWORD_MAX_LENGTH = "Password confirm must be less than 32 charac
 export const API_ERROR_MESSAGE = "Have an error in server!";
 export const REGISTER_SUCCESS = "User is created successfully! Please login to use";
 export const ERROR_CONNECT_INTERNET = "Not connect internet";
+export const EMPTY_TITLE_OR_DESCIPTION = "Title and description required";
+export const UPLOAD_IMAGE_SUCCESS = "Upload image successfully";

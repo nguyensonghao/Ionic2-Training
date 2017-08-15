@@ -7,6 +7,7 @@ import { Toast } from '@ionic-native/toast';
 import { Camera } from "@ionic-native/camera";
 import { File } from '@ionic-native/file';
 import { Crop } from '@ionic-native/crop';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 // Import pages
 import { MyApp } from './app.component';
@@ -25,7 +26,8 @@ import { StorageProvider } from '../providers/storage/storage';
 
 // Import components
 import { RateComponent } from './../components/rate/rate';
-import { EditImageComponent } from '../components/edit-image/edit-image';
+import { GalleryUploadComponent } from '../components/gallery-upload/gallery-upload';
+import { CameraUploadComponent } from '../components/camera-upload/camera-upload';
 
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
@@ -43,7 +45,8 @@ import { UploadProvider } from '../providers/upload/upload';
     ListProductPage,
     DetailProductPage,
     RateComponent,
-    EditImageComponent
+    GalleryUploadComponent,
+    CameraUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { UploadProvider } from '../providers/upload/upload';
     AboutPage,
     ListProductPage,
     DetailProductPage,
-    EditImageComponent
+    GalleryUploadComponent,
+    CameraUploadComponent
   ],
   providers: [
     StatusBar,
@@ -69,6 +73,7 @@ import { UploadProvider } from '../providers/upload/upload';
     Camera,
     File,
     Crop,
+    ImagePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ValidateProvider,
     UtilProvider,
