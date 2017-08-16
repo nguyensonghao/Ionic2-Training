@@ -16,6 +16,7 @@ import { LoginPage } from  '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AboutPage } from '../pages/about/about';
 import { ListProductPage } from '../pages/list-product/list-product';
+import { SliderPage } from './../pages/slider/slider';
 
 // Import providers
 import { DetailProductPage } from '../pages/detail-product/detail-product';
@@ -28,6 +29,7 @@ import { StorageProvider } from '../providers/storage/storage';
 import { RateComponent } from './../components/rate/rate';
 import { GalleryUploadComponent } from '../components/gallery-upload/gallery-upload';
 import { CameraUploadComponent } from '../components/camera-upload/camera-upload';
+import { DetailImageComponent } from '../components/detail-image/detail-image';
 
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
@@ -44,9 +46,11 @@ import { UploadProvider } from '../providers/upload/upload';
     AboutPage,
     ListProductPage,
     DetailProductPage,
+    SliderPage,
     RateComponent,
     GalleryUploadComponent,
-    CameraUploadComponent
+    CameraUploadComponent,
+    DetailImageComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +67,10 @@ import { UploadProvider } from '../providers/upload/upload';
     AboutPage,
     ListProductPage,
     DetailProductPage,
+    SliderPage,
     GalleryUploadComponent,
-    CameraUploadComponent
+    CameraUploadComponent,
+    DetailImageComponent
   ],
   providers: [
     StatusBar,

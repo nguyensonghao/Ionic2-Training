@@ -1,0 +1,31 @@
+detail-image {
+    background: rgba(0, 0, 0, 0.6) !important;
+
+    .content-md {
+        background: white !important;
+        width: 90% !important;
+        height: 90% !important;
+        left: 5%;
+        top: 5%;
+    }
+
+    .scroll-content {
+        overflow: auto;
+    }
+
+    .title {
+        margin-left: 10px;
+        margin-right: 30px;
+    }
+
+    .description {
+        margin-left: 10px;
+    }
+
+    .close-modal {
+        position: absolute;
+        right: 6px;
+        top: 4px;
+        font-size: 32px;
+    }
+}

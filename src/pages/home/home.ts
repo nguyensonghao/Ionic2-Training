@@ -7,8 +7,10 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { ShareProvider } from './../../providers/share/share';
 import { CameraUploadComponent } from './../../components/camera-upload/camera-upload';
 import { GalleryUploadComponent } from './../../components/gallery-upload/gallery-upload';
+import { DetailImageComponent } from './../../components/detail-image/detail-image';
 import { UploadProvider } from './../../providers/upload/upload';
 import { UtilProvider } from './../../providers/util/util';
+import { SliderPage } from './../slider/slider';
 import { APP_VERSION, API_URL, CURRENT_USER, ERROR_STATUS } from './../../constants/config';
 
 @Component({
@@ -83,6 +85,8 @@ export class HomePage {
 			})
 
 			modalEditCapture.present();
+		}, error => {
+			console.log(error);
 		})
 	}
 
@@ -112,8 +116,22 @@ export class HomePage {
 				modalEditCapture.present();
 			})
 		}, error => {
-			console.log("User suddenly close camera");
+			console.log(error);
 		})
+	}
+
+	showImage (image: any) {
+		let modalDetailImage = this.modalController.create(DetailImageComponent, {
+			imageUpload: image
+		})
+
+		modalDetailImage.present();
+	}
+
+	showSlider () {
+		this.navCtrl.push(SliderPage, {
+			listImage: this.listImage
+		});
 	}
 
 }

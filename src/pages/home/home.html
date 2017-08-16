@@ -28,9 +28,6 @@
     <ion-row padding-left class="twitter-name">
         {{ currentUser.email }}
     </ion-row>
-    <!--<ion-row padding>
-        This demo upload images ionic2+ PowerGate software.
-    </ion-row>-->
     <ion-row padding-left text-uppercase>
         <ion-col>
             <b>48</b> <span class="muted">Following</span>
@@ -67,7 +64,7 @@
                             {{ tweet.title }}
                         </ion-col>
                         <ion-col class="muted no-top-padding">
-                            <ion-icon name="chatbubbles"></ion-icon> {{ tweet.created_at | date: 'M/d' }}
+                            <ion-icon ios="ios-clock" md="md-clock"></ion-icon> {{ tweet.created_at | date: 'M/d' }}
                         </ion-col>
                     </ion-row>
 
@@ -76,27 +73,19 @@
                     </ion-row>
 
                     <ion-row class="share-row">
-                        <ion-col col-4 class="no-top-padding">
-                            <button ion-button icon-only clear small>
-                                <ion-icon name="share-alt"></ion-icon>
-                                <span class="muted"></span>
+                        <ion-col col-6 class="no-top-padding">
+                            <button ion-button small class="btn-custom" (click)="showImage(tweet)">
+                                <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
+                                <span>View Detail</span>
                             </button>
                         </ion-col>
 
-                        <ion-col col-4 class="no-top-padding">
-                            <button ion-button icon-only clear small>
-                                <ion-icon name="repeat"></ion-icon>
-                                <span class="muted">{{ tweet.shareCount }}</span>
+                        <ion-col col-6 class="no-top-padding">
+                            <button ion-button small class="btn-custom" (click)="showSlider()">
+                                <ion-icon ios="ios-fastforward" md="md-fastforward"></ion-icon>
+                                <span>Show Slider</span>
                             </button>
                         </ion-col>
-
-                        <ion-col col-4 class="no-top-padding">
-                            <button ion-button icon-only clear small>
-                                <ion-icon name="star"></ion-icon>
-                                <span class="muted">{{ tweet.likeCount }}</span>
-                            </button>
-                        </ion-col>
-
                     </ion-row>
                 </ion-col>
             </ion-row>

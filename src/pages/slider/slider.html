@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Show Slider</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-slides pager>
+    <ion-slide *ngFor="let image of listImage">
+      <h2 class="title">{{ image.title }}</h2>
+      <img [src]="image.image_link" class="image" />
+    </ion-slide>
+  </ion-slides>
+</ion-content>

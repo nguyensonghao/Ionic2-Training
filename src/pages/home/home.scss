@@ -41,4 +41,22 @@ page-home {
     .no-top-padding {
         padding-top: 0px;
     }
+
+    .btn-custom {
+        background: white !important;
+        color: black;
+        font-size: 12px;
+
+        ion-icon {
+            margin-right: 4px;
+        }
+
+        span {
+            text-transform: initial !important;
+        }
+    }
+
+    .btn-custom:hover {
+        background: white !important;
+    }
 }

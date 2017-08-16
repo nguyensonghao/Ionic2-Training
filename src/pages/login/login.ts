@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ValidateProvider } from '../../providers/validate/validate';
 import { UtilProvider } from '../../providers/util/util';
 import { AuthProvider } from './../../providers/auth/auth';
+import { ShareProvider } from './../../providers/share/share';
 import { ERROR_STATUS, APP_VERSION } from './../../constants/config';
 import { RegisterPage } from './../register/register';
 import { HomePage } from './../home/home';
@@ -18,7 +19,7 @@ export class LoginPage {
   public user: Object;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public validateProvider: ValidateProvider, 
-    public utilProvider: UtilProvider, public authProvider: AuthProvider) {
+    public utilProvider: UtilProvider, public authProvider: AuthProvider, public shareProvider: ShareProvider) {
     this.user = {
       email: '',
       password: ''
@@ -43,6 +44,7 @@ export class LoginPage {
             } else {
               // Save data. If in browser, data will be save in localStorage and in device, data will be save in native storage
               this.authProvider.saveUser(result.data);
+              this.shareProvider.currentUser = result.data;
               this.navCtrl.setRoot(HomePage);
             }
           }, error => {

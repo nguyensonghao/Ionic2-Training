@@ -1,0 +1,6 @@
+<ion-content>
+    <ion-icon class="close-modal" name="md-close" (click)="close()"></ion-icon>
+    <p class="title">{{ imageUpload.title }}</p>
+    <p class="description">{{ imageUpload.description }}</p>
+    <img [src]="imageUpload.image_link" class="image" />
+</ion-content>
