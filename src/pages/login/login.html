@@ -24,6 +24,16 @@
             <ion-row>
                 <ion-col class="signup-col">
                     <button ion-button class="submit-btn" full type="submit" color="primary">Login</button>
+                    <div class="login-socical">
+                        <button type="button" full ion-button class="btn-login-facebook" (click)="loginFacebook()">
+                            <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>
+                            <span>Login Facebook</span>
+                        </button>
+                        <button type="button" full ion-button class="btn-login-google" (click)="loginGoogle()">
+                            <ion-icon ios="logo-googleplus" md="logo-googleplus"></ion-icon>
+                            <span>Login Google</span>
+                        </button>
+                    </div>
                     <button ion-button class="register-btn" type="button" block clear color="light" (click)="goRegister()">Create New Account</button>
                 </ion-col>
             </ion-row>

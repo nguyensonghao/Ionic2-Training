@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h2 class="type-login">You Have Logined With {{user.type}}</h2>
+    <div class="profile-content">
+      <img [src]="user.avatar" class="avatar"/>
+      <div class="information">
+        <p class="username">{{user.name}}</p>
+        <p class="email">{{user.email}}</p>
+      </div>
+    </div>
+
+    <button ion-button full class="btn-logout" (click)="logout()">Logout</button>
+</ion-content>

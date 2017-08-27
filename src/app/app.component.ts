@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from  '../pages/login/login';
+import { ProfilePage } from './../pages/profile/profile';
 import { ListProductPage } from './../pages/list-product/list-product';
 import { HomePage } from './../pages/home/home';
 import { AuthProvider } from './../providers/auth/auth';
@@ -25,10 +26,10 @@ export class MyApp {
       splashScreen.hide();
 
       // Check have token
-      authProvider.getUser().then(user => {
-        shareProvider.currentUser = user;
+      authProvider.getUserSocial().then(user => {
+        shareProvider.currentUserSocial = user;
         if (user) {
-          this.rootPage = HomePage;
+          this.rootPage = ProfilePage;
         } else {
           this.rootPage = LoginPage;
         }

@@ -42,5 +42,28 @@ page-login {
     .register-btn {
       font-size: 0.8em;
     }
+
+    .login-socical {
+      button {
+        border-radius: 30px !important;
+        margin-top: 10px !important;
+        text-align: left !important;
+
+        ion-icon {
+          margin-right: 6px;
+          font-size: 24px;
+          position: relative;
+          top: -2px;
+        }
+      }
+
+      .btn-login-facebook {
+        background: #3b5998;
+      }
+
+      .btn-login-google {
+        background: #F44336;
+      }
+    }
   }
 }
