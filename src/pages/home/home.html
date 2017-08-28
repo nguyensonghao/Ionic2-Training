@@ -58,13 +58,13 @@
                 <ion-col col-3>
                     <img [src]="tweet.image_link" class="tweet-img">
                 </ion-col>
-                <ion-col col-9>
+                <ion-col col-9 class="detail">
                     <ion-row>
                         <ion-col col-9 class="no-top-padding">
                             {{ tweet.title }}
                         </ion-col>
                         <ion-col class="muted no-top-padding">
-                            <ion-icon ios="ios-clock" md="md-clock"></ion-icon> {{ tweet.created_at | date: 'M/d' }}
+                            {{ tweet.created_at | date:'shortDate' }}
                         </ion-col>
                     </ion-row>
 

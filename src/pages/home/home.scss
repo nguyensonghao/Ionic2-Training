@@ -37,6 +37,8 @@ page-home {
     }
     .share-row {
         height: 30px;
+        position: absolute;
+        bottom: 10px;
     }
     .no-top-padding {
         padding-top: 0px;
@@ -58,5 +60,9 @@ page-home {
 
     .btn-custom:hover {
         background: white !important;
+    }
+
+    .detail {
+        padding-bottom: 44px;
     }
 }

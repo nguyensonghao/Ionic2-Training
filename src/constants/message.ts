@@ -8,3 +8,4 @@ export const REGISTER_SUCCESS = "User is created successfully! Please login to u
 export const ERROR_CONNECT_INTERNET = "Not connect internet";
 export const EMPTY_TITLE_OR_DESCIPTION = "Title and description required";
 export const UPLOAD_IMAGE_SUCCESS = "Upload image successfully";
+export const MESSAGE_TOKEN_INVALID = "Your account has been sign out";

@@ -43,6 +43,8 @@ export class CameraUploadComponent {
           }
 
           this.viewCtrl.dismiss();
+          this.loadImage();
+          
         }, error => {
           this.utilProvider.showLoading(false);
           this.utilProvider.showErrorNotInternet();
@@ -51,5 +53,9 @@ export class CameraUploadComponent {
     } else {
       this.utilProvider.showToast(EMPTY_TITLE_OR_DESCIPTION);
     }
+  }
+
+  loadImage () {
+    this.params.get('loadImage')();
   }
 }

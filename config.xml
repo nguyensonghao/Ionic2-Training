@@ -12,8 +12,8 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-	<allow-navigation href="*"/>
-	<allow-navigation href="file://*/*" />
+    <allow-navigation href="*" />
+    <allow-navigation href="file://*/*" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
@@ -96,6 +96,6 @@
     <plugin name="cordova-plugin-filepath" spec="~1.0.2" />
     <plugin name="cordova-plugin-crop" spec="~0.3.1" />
     <plugin name="com.synconset.imagepicker" spec="~2.1.8">
-        <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="Access to use Image library" />
+        <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="Access to use image library" />
     </plugin>
 </widget>
