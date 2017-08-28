@@ -98,4 +98,10 @@
     <plugin name="com.synconset.imagepicker" spec="~2.1.8">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="Access to use image library" />
     </plugin>
+    <plugin name="cordova-plugin-facebook4" spec="~1.9.1">
+        <variable name="APP_ID" value="848551738655760" />
+        <variable name="APP_NAME" value="Ionic2 Training" />
+    </plugin>
+    <allow-navigation href="http://192.168.56.1:8101" />
+    <plugin name="cordova-plugin-googleplus" spec="~5.1.1" />
 </widget>

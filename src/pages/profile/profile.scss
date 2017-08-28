@@ -1,0 +1,19 @@
+page-profile {
+    .content-md {
+        background: white;
+
+        .type-login {
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .btn-logout {
+            border-radius: 20px !important;
+        }
+
+        .avatar {
+            float: left;
+            margin-right: 20px;
+        }
+    }
+}

@@ -8,6 +8,8 @@ import { Camera } from "@ionic-native/camera";
 import { File } from '@ionic-native/file';
 import { Crop } from '@ionic-native/crop';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 // Import pages
 import { MyApp } from './app.component';
@@ -17,6 +19,7 @@ import { RegisterPage } from '../pages/register/register';
 import { AboutPage } from '../pages/about/about';
 import { ListProductPage } from '../pages/list-product/list-product';
 import { SliderPage } from './../pages/slider/slider';
+import { ProfilePage } from './../pages/profile/profile';
 
 // Import providers
 import { DetailProductPage } from '../pages/detail-product/detail-product';
@@ -47,6 +50,7 @@ import { UploadProvider } from '../providers/upload/upload';
     ListProductPage,
     DetailProductPage,
     SliderPage,
+    ProfilePage,
     RateComponent,
     GalleryUploadComponent,
     CameraUploadComponent,
@@ -68,6 +72,7 @@ import { UploadProvider } from '../providers/upload/upload';
     ListProductPage,
     DetailProductPage,
     SliderPage,
+    ProfilePage,
     GalleryUploadComponent,
     CameraUploadComponent,
     DetailImageComponent
@@ -80,6 +85,8 @@ import { UploadProvider } from '../providers/upload/upload';
     File,
     Crop,
     ImagePicker,
+    Facebook,
+    GooglePlus,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ValidateProvider,
     UtilProvider,

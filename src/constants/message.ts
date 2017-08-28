@@ -9,3 +9,5 @@ export const ERROR_CONNECT_INTERNET = "Not connect internet";
 export const EMPTY_TITLE_OR_DESCIPTION = "Title and description required";
 export const UPLOAD_IMAGE_SUCCESS = "Upload image successfully";
 export const MESSAGE_TOKEN_INVALID = "Your account has been sign out";
+export const ERROR_LOGOUT = "Have an error when logout"; 
+export const ERROR_LOGIN_FACEBOOK = "Have an error when login with Facebook";

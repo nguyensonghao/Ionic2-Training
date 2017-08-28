@@ -8,6 +8,8 @@ import { ShareProvider } from './../../providers/share/share';
 import { ERROR_STATUS, APP_VERSION } from './../../constants/config';
 import { RegisterPage } from './../register/register';
 import { HomePage } from './../home/home';
+import { ProfilePage } from './../profile/profile';
+import { ERROR_LOGIN_FACEBOOK } from './../../constants/message';
 
 @Component({
   selector: 'page-login',
@@ -55,6 +57,24 @@ export class LoginPage {
         this.utilProvider.showToast(validatePassword['message']);
       }
     }
+  }
+
+  loginFacebook () {
+    this.authProvider.loginFacebook().then((data) => {
+      if (data) {
+        data['type'] = 'facebook';
+        data['avatar'] = data['picture']['data']['url'];
+        this.shareProvider.currentUserSocial = data;
+        this.authProvider.saveUserSocial(data);
+        this.navCtrl.setRoot(ProfilePage);
+      } else {
+        this.utilProvider.showToast(ERROR_LOGIN_FACEBOOK);
+      }
+    })
+  }
+
+  loginGoogle () {
+    this.authProvider.loginGoogle();
   }
 
   goRegister () {
